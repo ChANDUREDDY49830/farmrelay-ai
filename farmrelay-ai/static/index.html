@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10251d">
+  <title>FarmRelay AI — Your farm, coordinated</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="FarmRelay AI home"><span class="brand-mark">F</span><span>FarmRelay <b>AI</b></span></a>
+    <span class="local-pill"><span class="dot"></span> LOCAL DEMO</span>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">YOUR FARM OPERATIONS COPILOT</div>
+      <h1>One request.<br><em>Every task, coordinated.</em></h1>
+      <p>Turn a busy farm day into a clear, reviewable plan. FarmRelay checks your inputs, flags resource conflicts, and keeps you in control.</p>
+      <div class="hero-tags"><span>✦ Multi-step planning</span><span>↗ Resource checks</span><span>✓ Human approval</span></div>
+    </section>
+    <section class="workspace">
+      <div class="panel form-panel">
+        <div class="section-head"><div><div class="eyebrow">01 / TELL US THE SITUATION</div><h2>Plan a farm day</h2></div><span class="step-badge">INPUT</span></div>
+        <form id="planner-form">
+          <label>Farm name or location<input name="location" value="Green Valley Farm" maxlength="80" required></label>
+          <div class="two-col">
+            <label>Crop type<input name="crop" value="Tomato" maxlength="80" required></label>
+            <label>Farm size (acres)<input name="acres" type="number" min="0.1" max="10000" step="0.1" value="2" required></label>
+          </div>
+          <div class="two-col">
+            <label>Available workers<input name="workers" type="number" min="1" max="1000" step="1" value="2" required></label>
+            <label>Fertilizer stock (kg)<input name="fertilizer_kg" type="number" min="0" max="1000000" step="0.1" value="20" required></label>
+          </div>
+          <label>Rain scenario <select name="rain_forecast"><option value="none">No rain expected (demo input)</option><option value="possible">Rain possible (demo input)</option><option value="likely" selected>Rain likely (demo input)</option></select></label>
+          <fieldset><legend>Tasks to consider</legend>
+            <label class="check"><input type="checkbox" name="tasks" value="Inspect crops" checked><span>Inspect crops</span></label>
+            <label class="check"><input type="checkbox" name="tasks" value="Irrigation check" checked><span>Irrigation check</span></label>
+            <label class="check"><input type="checkbox" name="tasks" value="Apply fertilizer" checked><span>Apply fertilizer</span></label>
+            <label class="check"><input type="checkbox" name="tasks" value="Weed control" checked><span>Weed control</span></label>
+            <label class="check"><input type="checkbox" name="tasks" value="Repair equipment"><span>Repair equipment</span></label>
+            <label class="check"><input type="checkbox" name="tasks" value="Harvest ready crops"><span>Harvest ready crops</span></label>
+          </fieldset>
+          <button class="primary" type="submit"><span>✦</span> Generate my farm plan <span class="arrow">↗</span></button>
+          <p class="microcopy">No sign-up · No paid API · Runs on this laptop</p>
+        </form>
+      </div>
+      <div class="panel results-panel" id="results-panel" aria-live="polite">
+        <div class="section-head"><div><div class="eyebrow">02 / YOUR COORDINATED PLAN</div><h2>Today's game plan</h2></div><span class="step-badge">PREVIEW</span></div>
+        <div id="empty-state" class="empty-state"><div class="empty-icon">✳</div><h3>Your plan starts here</h3><p>Enter your farm situation and generate a draft. The planner will show task order, explain its choices, and flag possible conflicts.</p><button type="button" class="secondary" id="load-example">Load example scenario</button></div>
+        <div id="plan-output" hidden></div>
+      </div>
+    </section>
+    <section class="trust-strip">
+      <div><span class="trust-icon">◎</span><div><b>Explainable by design</b><small>Every task includes a reason.</small></div></div>
+      <div><span class="trust-icon">⌁</span><div><b>Human stays in control</b><small>Plans are drafts, never auto-executed.</small></div></div>
+      <div><span class="trust-icon">◈</span><div><b>Honest about data</b><small>Demo scenarios are clearly labeled.</small></div></div>
+    </section>
+    <footer><span>FARMRELAY AI <span class="muted">/ HACKATHON PROTOTYPE</span></span><span>Built to make farm work easier to coordinate.</span></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
