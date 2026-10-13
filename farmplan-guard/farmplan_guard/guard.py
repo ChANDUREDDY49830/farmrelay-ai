@@ -26,12 +26,13 @@ def validate_schedule(schedule):
 
 
 def detect_conflicts(schedule, workers):
-    """Flag more simultaneously scheduled tasks than available workers.
+    """Flag start-time buckets containing more tasks than available workers.
 
-    Times are interpreted as start-time buckets because this tiny library does not
-    infer task durations. Callers can provide richer interval checks separately.
+    This basic check groups tasks by exact start time. It does not infer task
+    duration or detect overlapping intervals with different start times.
     """
-    if not isinstance(workers, int) or workers < 1:
+    # bool is a subclass of int in Python, but True is not a meaningful worker count.
+    if isinstance(workers, bool) or not isinstance(workers, int) or workers < 1:
         raise ValueError("workers must be a positive integer")
     if not isinstance(schedule, list):
         raise ValueError("schedule must be a list")
